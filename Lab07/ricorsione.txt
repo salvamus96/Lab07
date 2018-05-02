@@ -1,0 +1,27 @@
+- Soluzione: elenco degli eventi di outages con relativa 
+			differenza tra inzio e fine e numero di persone coinvolte
+			
+- Soluzione parziale: elenco eventi con 
+- Soluzione ottima: 
+
+- Livello della ricorsione: un evento della lista di eventi relativi al NERC
+
+- Condizione di terminazione: dimensione della lista raggiunta
+
+
+- Come generare nuove soluzioni?
+	Provo ad aggiungere tutti gli eventi di outages relativi al NERC inserito
+	- purché rispettino i vincoli:
+		- l'evento che sto aggiungendo non risale a X anni 
+			in più rispetto all'evento più vecchio della soluzione parziale
+	    
+	    - la differenza tra inizio e fine non supera le Y ore
+	    
+	    
+- Cosa fare quando ho trovato una soluzione completa?
+		- calcolo il numero di persone coinvolte in totale
+		
+		- confronta questo costo con quello della soluzione migliore trovata finora
+			- se è minore, salva questa soluzione come la migliore
+	
+		- in ogni caso, continua la ricerca

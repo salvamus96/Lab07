@@ -38,7 +38,35 @@ public class PowerOutagesController {
 
     @FXML
     void doAnalysis(ActionEvent event) {
-
+    	this.txtResult.clear();
+    	
+    	Nerc nerc = this.boxNerc.getValue();
+    	if(nerc == null) {
+    		this.txtResult.appendText("Selezionare un NERC!");
+    		return ;
+    	}
+    	
+    	if (this.txtYears.getText().isEmpty()) {
+    		this.txtResult.appendText("Inserire un intervallo massimo di anni per l'analisi!");
+    		return ;
+    	}
+    	
+    	if (this.txtHours.getText().isEmpty()) {
+    		this.txtResult.appendText("Inserire un intervallo massimo di ore per l'analisi!");
+    		return ;
+    	}
+		
+    	try {
+    		int maxYears = Integer.parseInt(this.txtYears.getText());
+    		int maxHours = Integer.parseInt(this.txtHours.getText());
+    		
+    		this.txtResult.appendText(model.analizza(nerc, maxYears, maxHours));
+        	
+    	}catch(NumberFormatException e) {	
+    		this.txtResult.appendText("Formato intervallo massimo delle ore o degli anni non ammesso!\n");
+    	}
+    	
+    
     }
 
     @FXML // This method is called by the FXMLLoader when initialization is complete
@@ -49,10 +77,13 @@ public class PowerOutagesController {
         assert boxNerc != null : "fx:id=\"boxNerc\" was not injected: check your FXML file 'PowerOutages.fxml'.";
         assert txtResult != null : "fx:id=\"txtResult\" was not injected: check your FXML file 'PowerOutages.fxml'.";
 
+     	this.txtResult.setStyle("-fx-font-family: monospace");
+
     }
 
 	public void setModel(Model model) {
 		this.model = model;
 		this.boxNerc.getItems().addAll(model.getNercList());
 	}
+
 }
