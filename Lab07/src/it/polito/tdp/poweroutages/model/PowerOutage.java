@@ -21,6 +21,7 @@ public class PowerOutage {
 		this.dateBegan = dateBegan;
 		this.dateFinished = dateFinished;
 		
+		// UNTIL utile per calcolare la differenza tra date specificando anche l'unità di misura 
 		this.duration = this.dateBegan.until(dateFinished, ChronoUnit.HOURS);
 		
 	}

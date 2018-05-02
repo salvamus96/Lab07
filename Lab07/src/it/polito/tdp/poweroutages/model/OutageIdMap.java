@@ -19,7 +19,6 @@ public class OutageIdMap {
 	public PowerOutage get(PowerOutage powerOutage) {
 		PowerOutage old = map.get(powerOutage.getId());
 		if (old == null) {
-			// nella mappa non c'è questo corso!
 			map.put(powerOutage.getId(), powerOutage);
 			return powerOutage;
 		}

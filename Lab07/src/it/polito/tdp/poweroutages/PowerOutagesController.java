@@ -63,7 +63,7 @@ public class PowerOutagesController {
     		this.txtResult.appendText(model.analizza(nerc, maxYears, maxHours));
         	
     	}catch(NumberFormatException e) {	
-    		this.txtResult.appendText("Formato intervallo massimo delle ore o degli anni non ammesso!\n");
+    		this.txtResult.appendText("Formato intervallo massimo delle ore o degli anni non ammesso!");
     	}
     	
     

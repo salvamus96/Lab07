@@ -8,6 +8,7 @@ public class Nerc {
 	private int id;
 	private String value;
 	
+// lista su cui andrò a lavorare	
 	private List <PowerOutage> outages;
   
 	public Nerc(int id, String value) {

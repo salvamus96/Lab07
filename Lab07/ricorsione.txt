@@ -1,12 +1,14 @@
 - Soluzione: elenco degli eventi di outages con relativa 
 			differenza tra inzio e fine e numero di persone coinvolte
 			
-- Soluzione parziale: elenco eventi con 
-- Soluzione ottima: 
+- Soluzione parziale: elenco eventi di outages che rispetta i vincoli
+- Soluzione ottima: elenco eventi di outages con numero di persone coinvolte maggiore
 
-- Livello della ricorsione: un evento della lista di eventi relativi al NERC
+- Livello della ricorsione: non ESISTE un vero e proprio livello (ogni elemento aggiunto nella lista)
 
-- Condizione di terminazione: dimensione della lista raggiunta
+- Condizione di terminazione: una volta che ciclo su tutti gli outages riferiti al NERC selezionato
+							provo ad inserire l'elemento e controllo la soluzione parziale 
+							==> la terminazione è IMPLICITA: è contenuto nel
 
 
 - Come generare nuove soluzioni?
@@ -15,7 +17,7 @@
 		- l'evento che sto aggiungendo non risale a X anni 
 			in più rispetto all'evento più vecchio della soluzione parziale
 	    
-	    - la differenza tra inizio e fine non supera le Y ore
+	    - la differenza tra inizio e fine di ogni durata non supera le Y ore
 	    
 	    
 - Cosa fare quando ho trovato una soluzione completa?

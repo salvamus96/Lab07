@@ -26,7 +26,8 @@ public class PowerOutageDAO {
 
 			while (res.next()) {
 				Nerc n = new Nerc(res.getInt("id"), res.getString("value"));
-				
+
+// utilizzo del pattern ORM con un nercIdMap				
 				nercList.add(nercMap.get(n));
 			}
 
@@ -40,6 +41,7 @@ public class PowerOutageDAO {
 	}
 
 	public void getOutagesFromNerc(Nerc nerc, OutageIdMap outageMap) {
+// utile ordinare gli eventi per la lora dataFine per questioni di efficienza (dal più vecchio al più recente)		
 		String sql = "SELECT P.id, P.nerc_id, customers_affected, date_event_began, date_event_finished " + 
 					 "FROM poweroutages AS P, nerc AS N " + 
 					 "WHERE P.nerc_id = N.id AND N.id = ? " +
@@ -51,6 +53,8 @@ public class PowerOutageDAO {
 			ResultSet res = st.executeQuery();
 
 			while (res.next()) {
+// Le date nel database sono specifica come DATETIME per poter accedere si usa
+// il metodo getTimestamp(...).toLocalDateTime () per poter convertire nel formato da me dichiarato
 				PowerOutage p = new PowerOutage (res.getInt("id"),
 										res.getInt("nerc_id"), res.getInt("customers_affected"), 
 										res.getTimestamp("date_event_began").toLocalDateTime(),
